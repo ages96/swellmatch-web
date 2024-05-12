@@ -1,0 +1,58 @@
+{
+  "name": "swellmatch-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@coreui/coreui": "^5.0.1",
+    "@coreui/react": "^5.0.0",
+    "@fontsource/bodoni-moda": "^5.0.14",
+    "@fontsource/inter": "^5.0.18",
+    "@next/font": "^14.0.0",
+    "@nextui-org/react": "^2.3.6",
+    "@radix-ui/react-checkbox": "^1.0.1",
+    "@radix-ui/react-label": "^2.0.0",
+    "@radix-ui/react-radio-group": "^1.1.1",
+    "@radix-ui/react-separator": "^1.0.1",
+    "@radix-ui/react-switch": "^1.0.1",
+    "@radix-ui/react-toggle-group": "^1.0.2",
+    "@types/node": "18.13.0",
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.10",
+    "class-variance-authority": "^0.4.0",
+    "clsx": "^1.2.1",
+    "dropzone": "^6.0.0-beta.2",
+    "eslint-config-next": "^14.0.0",
+    "eslint-plugin-tailwindcss": "^3.8.3",
+    "framer-motion": "^9.0.4",
+    "install": "^0.13.0",
+    "lucide-react": "^0.112.0",
+    "next": "^14.0.0",
+    "npm": "^10.7.0",
+    "rc-slider": "^10.6.2",
+    "react": "18.2.0",
+    "react-date-picker": "^11.0.0",
+    "react-dom": "18.2.0",
+    "react-dropzone": "^14.2.3",
+    "react-rough-notation": "^1.0.3",
+    "reactstrap": "^9.2.2",
+    "tailwind-merge": "^1.9.1",
+    "tailwindcss-animate": "^1.0.5",
+    "typescript": "4.9.5"
+  },
+  "devDependencies": {
+    "@types/dropzone": "^5.7.8",
+    "autoprefixer": "^10.4.13",
+    "eslint": "^8.34.0",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.6"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
