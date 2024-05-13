@@ -126,8 +126,6 @@ export default function Home() {
 
     let errorStep = 0;
 
-    console.log(currentStepIndex)
-
     if (currentStepIndex==0) {
 
       if (name == "") {

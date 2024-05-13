@@ -37,6 +37,12 @@ const MyDropzoneComponent: React.FC<Props> = ({ files, updateForm,base64files,er
     const newFiles = [...files, ...acceptedFiles];
     updateForm({ base64files: base64files });
     setFiles(newFiles);
+    let elements = document.getElementsByClassName("validation-file-upload") as HTMLCollectionOf<HTMLElement>;
+    
+    // Mengubah tampilan setiap elemen menjadi "none" untuk menyembunyikannya
+    for(var i = 0; i < elements.length; i++) {
+      elements[i].style.display = "none";
+    }
   };
 
   // Handles the remove event when a file is removed from the dropzone.
