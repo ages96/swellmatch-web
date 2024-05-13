@@ -1,4 +1,4 @@
-# Swallmatch WEB
+# Swellmatch WEB
 
 ## Framework
 
@@ -41,7 +41,7 @@ npm run start
 ```
 ## Accessing the hosted Web Application
 
-Visit [Swallmatch WEB](https://catelix.com/booking) to access the web application.
+Visit [Swellmatch WEB](https://catelix.com/booking) to access the web application.
 
 ## Notes
 
