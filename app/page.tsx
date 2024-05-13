@@ -62,57 +62,114 @@ export default function Home() {
   function updateForm(fieldToUpdate: Partial<FormItems>) {
     const { name, email, phone, country, visit_date, desired_board, files } = fieldToUpdate;
 
-    if (name && name.trim().length < 3) {
-      setErrors((prevState) => ({
-        ...prevState,
-        name: "Name should be at least 3 characters long",
-      }));
-    } else if (name && name.trim().length > 15) {
-      setErrors((prevState) => ({
-        ...prevState,
-        name: "Name should be no longer than 15 characters",
-      }));
-    } else {
-      setErrors((prevState) => ({
-        ...prevState,
-        name: "",
-      }));
-    }
+    if (currentStepIndex==0) {
+      if (formData.name=="") {
+        setErrors((prevState) => ({
+          ...prevState,
+          name: "Required",
+        }));
+      } else if (name && name.trim().length < 3) {
+        setErrors((prevState) => ({
+          ...prevState,
+          name: "Name should be at least 3 characters long",
+        }));
+      } else if (name && name.trim().length > 15) {
+        setErrors((prevState) => ({
+          ...prevState,
+          name: "Name should be no longer than 15 characters",
+        }));
+      } else {
+        setErrors((prevState) => ({
+          ...prevState,
+          name: "",
+        }));
+      }
+      if (formData.email=="") {
+        setErrors((prevState) => ({
+          ...prevState,
+          email: "Required",
+        }));
+      } else if (email && !/\S+@\S+\.\S+/.test(email)) {
+        setErrors((prevState) => ({
+          ...prevState,
+          email: "Please enter a valid email address",
+        }));
+      } else {
+        setErrors((prevState) => ({
+          ...prevState,
+          email: "",
+        }));
+      }
 
-    if (email && !/\S+@\S+\.\S+/.test(email)) {
-      setErrors((prevState) => ({
-        ...prevState,
-        email: "Please enter a valid email address",
-      }));
-    } else {
-      setErrors((prevState) => ({
-        ...prevState,
-        email: "",
-      }));
-    }
+      if (formData.phone=="") {
+        setErrors((prevState) => ({
+          ...prevState,
+          phone: "Required",
+        }));
+      } else if (phone && !/^[0-9]{10}$/.test(phone)) {
+        setErrors((prevState) => ({
+          ...prevState,
+          phone: "Please enter a valid 10-digit whatsapp number",
+        }));
+      } else {
+        setErrors((prevState) => ({
+          ...prevState,
+          phone: "",
+        }));
+      }
 
-    if (phone && !/^[0-9]{10}$/.test(phone)) {
-      setErrors((prevState) => ({
-        ...prevState,
-        phone: "Please enter a valid 10-digit whatsapp number",
-      }));
-    } else {
-      setErrors((prevState) => ({
-        ...prevState,
-        phone: "",
-      }));
-    }
+      if (country=="") { 
+        setErrors((prevState) => ({
+          ...prevState,
+          country: "Required",
+        }));
+      } else {
+        setErrors((prevState) => ({
+          ...prevState,
+          country: "",
+        }));
+      }
+    } else if (currentStepIndex==1) {
+      if (errors.desired_board) {
+        setErrors((prevState) => ({
+          ...prevState,
+          desired_board: "Required",
+        }));
+      } else {
+        setErrors((prevState) => ({
+          ...prevState,
+          desired_board: "",
+        }));
+      }
 
-    if (country && country=="") {
-      setErrors((prevState) => ({
-        ...prevState,
-        country: "Country required",
-      }));
-    } else {
-      setErrors((prevState) => ({
-        ...prevState,
-        country: "",
-      }));
+      if (formData.visit_date=="") {
+        setErrors((prevState) => ({
+          ...prevState,
+          visit_date: "Required",
+        }));
+      } else if (errors.visit_date) {
+        setErrors((prevState) => ({
+          ...prevState,
+          visit_date: "Required",
+        }));
+      } else {
+        setErrors((prevState) => ({
+          ...prevState,
+          visit_date: "",
+        }));
+      }
+
+      if (errors.surfing_experience) {
+        setErrors((prevState) => ({
+          ...prevState,
+          surfing_experience: "Required",
+        }));
+      } else {
+        setErrors((prevState) => ({
+          ...prevState,
+          surfing_experience: "",
+        }));
+      }
     }
 
     setFormData({ ...formData, ...fieldToUpdate });
