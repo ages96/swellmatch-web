@@ -1,3 +1,4 @@
+// Imports necessary libraries and dependencies.
 import { useState, useEffect } from "react";
 import FormWrapper from "./FormWrapper";
 import { Separator } from "@/components/ui/separator";
@@ -7,11 +8,13 @@ import { COUNTRIES } from '../lib/countries';
 import { SelectMenuOption } from "../lib/types";
 import CountrySelector from '../lib/selector';
 
+// Define props for the FinalStep component.
 type StepProps = FormItems & {
   updateForm: (fieldToUpdate: Partial<FormItems>) => void;
   goTo: (index: number) => void;
 };
 
+// Component for the final step of the form.
 const FinalStep = ({  
   name,
   email,
@@ -24,6 +27,7 @@ const FinalStep = ({
   
   const [isOpen, setIsOpen] = useState(false);
 
+  // Automatically reload the window after 5 seconds.
   useEffect(() => {
     const timeout = setTimeout(() => {
       window.location.reload(); // Reload the window after 5 seconds
@@ -33,6 +37,7 @@ const FinalStep = ({
   }, []); // Empty dependency array ensures the effect runs only once on mount
 
   return (
+    // Form wrapper with title and description.
     <FormWrapper
       title={`Thank you, ${name}`}
       description="You&apos;re In!" 
@@ -46,6 +51,7 @@ const FinalStep = ({
         </div>
       </div>
 
+      {/* Form inputs */}
       <div className="flex flex-col gap-5 md:flex-row md:gap-5" style={{position: "relative",right: "12px"}}>
         <div className="flex flex-col gap-2 md:w-1/2 col-span-6">
           <CFormInput className="customInputLabel" value={name} type="text" id="floatingInput" floatingClassName="mb-3" floatingLabel="Name" placeholder="Name" />
@@ -70,12 +76,14 @@ const FinalStep = ({
         </div>
       </div>
 
+      {/* Confirmation message */}
       <div className="flex flex-col h-full md:flex-row">
         <div className="flex flex-col gap-2 col-span-12">
           <p>We look forward to seeing you at the #Swellmatch store! Your booking details already sent to your email and whatsapp</p>
         </div>
       </div>
 
+      {/* Timer for automatic refresh */}
       <div className="flex flex-col h-full md:flex-row">
         <div className="flex flex-col gap-2 col-span-12">
           <p style={{color: "rgba(255, 255, 255, 0.60)",fontFamily: "Inter",fontSize: "12px",fontStyle: "normal",fontWeight: "400"}}>This form will refresh automatically in 10 seconds</p>

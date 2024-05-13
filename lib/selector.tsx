@@ -1,8 +1,10 @@
+// Imports necessary data and dependencies.
 import { COUNTRIES } from "./countries";
 import { SelectMenuOption } from "./types";
 import { AnimatePresence, motion } from "framer-motion";
 import React, { MutableRefObject, useEffect, useRef, useState } from "react";
 
+// Defines props for the CountrySelector component.
 export interface CountrySelectorProps {
   id: string;
   open: boolean;
@@ -13,6 +15,7 @@ export interface CountrySelectorProps {
   classExt: string;
 }
 
+// CountrySelector component to select countries.
 export default function CountrySelector({
   id,
   open,
@@ -49,6 +52,7 @@ export default function CountrySelector({
   return (
     <div ref={ref}>
       <div className="relative">
+        {/* Country selection button */}
         <button 
           type="button"
           className={`${
@@ -60,6 +64,7 @@ export default function CountrySelector({
           onClick={onToggle}
           disabled={disabled}
         >
+          {/* Display selected country */}
           <span style={{color: "#CCC",fontFamily: "Inter",fontSize: "16px",fontStyle: "normal",fontWeight: 400}} className="truncate flex items-center">
             &nbsp;&nbsp;<img
               alt={`${selectedValue.value}`}
@@ -70,6 +75,7 @@ export default function CountrySelector({
           </span>
         </button>
 
+        {/* Dropdown for country selection */}
         <AnimatePresence>
           {open && (
             <motion.ul
@@ -86,6 +92,7 @@ export default function CountrySelector({
               scrollbarWidth: "thin"}}
             >
               <div>
+                {/* Search input */}
                 <li className="">
                   <input
                     type="search"
@@ -104,6 +111,7 @@ export default function CountrySelector({
                   "max-h-64"
                 }
               >
+                {/* List of countries */}
                 {COUNTRIES.filter((country) =>
                   country.title.toLowerCase().startsWith(query.toLowerCase())
                 ).length === 0 ? (
@@ -136,6 +144,7 @@ export default function CountrySelector({
                           <span style={{color: "#CCC",fontFamily: "Inter",fontSize: "16px",fontStyle: "normal",fontWeight: 400}} className="font-normal truncate">
                             {value.title}
                           </span>
+                          {/* Indicates selected country */}
                           {value.value === selectedValue.value ? (
                             <span className="text-blue-600 absolute inset-y-0 right-0 flex items-center pr-8">
                               <svg

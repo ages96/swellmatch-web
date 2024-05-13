@@ -1,3 +1,4 @@
+// 'use client' - Indicates that this custom hook is intended for use in a client-side React application.
 'use client'
 
 import { useState } from 'react'

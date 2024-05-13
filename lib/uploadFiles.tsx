@@ -1,8 +1,10 @@
+// Import necessary libraries and dependencies.
 import React, { useState } from 'react';
 import Dropzone, { FileRejection } from 'react-dropzone';
 import fileIcon from "../public/assets/file.svg";
 import { FormItems } from "@/app/page";
 
+// Define props for the MyDropzoneComponent.
 interface Props {
   files: File[];
   base64files:object[];
@@ -10,10 +12,12 @@ interface Props {
   errorMessage:string;
 }
 
+// MyDropzoneComponent component for file uploading.
 const MyDropzoneComponent: React.FC<Props> = ({ files, updateForm,base64files,errorMessage }) => {
 
   const [newFiles, setFiles] = useState<File[]>([]);
 
+  // Handles the drop event when files are dropped into the dropzone.
   const handleDrop = (acceptedFiles: File[], _fileRejections: FileRejection[]) => {
 
     acceptedFiles.forEach(file => {
@@ -35,6 +39,7 @@ const MyDropzoneComponent: React.FC<Props> = ({ files, updateForm,base64files,er
     setFiles(newFiles);
   };
 
+  // Handles the remove event when a file is removed from the dropzone.
   const handleRemove = (index: number, e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
       // Remove the file from base64files array
@@ -46,6 +51,7 @@ const MyDropzoneComponent: React.FC<Props> = ({ files, updateForm,base64files,er
       setFiles(updatedFiles);
   };
 
+  // Formats file size to a readable format.
   const formatFileSize = (bytes: number) => {
     if (bytes < 1024) {
       return `${bytes} B`;
@@ -60,12 +66,15 @@ const MyDropzoneComponent: React.FC<Props> = ({ files, updateForm,base64files,er
 
   return (
     <div>
+      {/* File upload label */}
       <label className='brief-input-file' htmlFor="fileInput">Help us verify your identity by uploading a photo of your ID/KTP or Passport</label>
 
+      {/* Error message */}
       {errorMessage && (
         <div className="text-red-500" style={{paddingBottom: "20px",marginTop: "-30px"}}>{errorMessage}</div>
       )}
 
+      {/* Dropzone area */}
       {(newFiles.length == 0 && base64files.length==0) && (
         <Dropzone onDrop={handleDrop}>
         {({ getRootProps, getInputProps }) => (
@@ -79,6 +88,7 @@ const MyDropzoneComponent: React.FC<Props> = ({ files, updateForm,base64files,er
         </Dropzone>
       )}
 
+      {/* Preview of uploaded files */}
       {(newFiles.length>0 || base64files.length == 0) && (
         <div>
           <ul className="preview-files">
@@ -93,6 +103,7 @@ const MyDropzoneComponent: React.FC<Props> = ({ files, updateForm,base64files,er
                     <p className="entry-upload-size">{formatFileSize(file.size)}</p>
                   </div>
                   <div className="flex flex-col col-span-1">
+                  {/* Button to remove file */}
                   <button
                     className="remove-input-button"
                     onClick={(e) => handleRemove(index, e)}
@@ -112,6 +123,7 @@ const MyDropzoneComponent: React.FC<Props> = ({ files, updateForm,base64files,er
         </div>
       )}
       
+      {/* Preview of uploaded files (base64 format) */}
       {(newFiles.length == 0 && base64files.length > 0) && (
         <div>
           <ul className="preview-files">
@@ -126,6 +138,7 @@ const MyDropzoneComponent: React.FC<Props> = ({ files, updateForm,base64files,er
                     <p className="entry-upload-size">{formatFileSize(file.size)}</p>
                   </div>
                   <div className="flex flex-col col-span-1">
+                  {/* Button to remove file */}
                   <button
                     className="remove-input-button"
                     onClick={(e) => handleRemove(index, e)}
@@ -148,6 +161,7 @@ const MyDropzoneComponent: React.FC<Props> = ({ files, updateForm,base64files,er
   );
 };
 
+// Styles for the dropzone area.
 const dropzoneStyles: React.CSSProperties = {
   border: '2px dashed #ccc',
   borderRadius: '4px',

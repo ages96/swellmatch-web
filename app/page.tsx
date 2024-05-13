@@ -1,5 +1,6 @@
 "use client";
 
+// Import necessary libraries and dependencies.
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useMultiplestepForm } from "hooks/useMultiplestepForm";
@@ -12,6 +13,7 @@ import SuccessMessage from "@/components/SuccessMessage";
 import FailedMessage from "@/components/FailedMessage";
 import SideBar from "@/components/SideBar";
 
+// Define the type for form items.
 export type FormItems = {
   name: string;
   email: string;
@@ -24,6 +26,7 @@ export type FormItems = {
   desired_board:string;
 };
 
+// Initial values for form fields
 const initialValues: FormItems = {
   name: "",
   email: "",
@@ -37,12 +40,13 @@ const initialValues: FormItems = {
 };
 
 export default function Home() {
-  
+   // State variables to manage form data, errors, success and error messages.
   const [formData, setFormData] = useState(initialValues);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  // Custom hook to manage multiple steps in the form.
   const {
     previousStep,
     nextStep,
@@ -54,6 +58,7 @@ export default function Home() {
     showSuccessMsg
   } = useMultiplestepForm(4);
 
+  // Function to update form data.
   function updateForm(fieldToUpdate: Partial<FormItems>) {
     const { name, email, phone, country, visit_date, desired_board, files } = fieldToUpdate;
 
@@ -113,6 +118,7 @@ export default function Home() {
     setFormData({ ...formData, ...fieldToUpdate });
   }
 
+  // Function to handle form submission.
   const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
