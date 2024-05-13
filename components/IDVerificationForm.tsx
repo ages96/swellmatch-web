@@ -30,7 +30,7 @@ const IDVerificationForm = ({ files, updateForm, errors,base64files,successMessa
     </div>
 
     {/* Error message for uploads */}
-    {errors.base64files && (
+    {errors.base64files && base64files.length==0 && (
       <p style={{bottom:"130px"}} className="text-red-500 text-sm relative validation-file-upload">File upload required</p>
     )}
     
